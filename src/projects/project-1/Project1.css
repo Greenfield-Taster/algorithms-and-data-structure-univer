@@ -1,0 +1,26 @@
+ .Project1 {
+  background-image: url(./img/cats.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapperProj1 {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.blockProj1 button {
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgb(78, 36, 133);
+  border-radius: 10px;
+  padding: 10px;
+  width: 400px;
+  height: 100px;
+  cursor: pointer;
+  background-color: rgb(228, 223, 255);
+}

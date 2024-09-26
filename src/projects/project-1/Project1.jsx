@@ -1,8 +1,8 @@
-import "./Project1.css"
-import React from 'react'
-import {Task1} from "./components/Task1.js"
-import {Task2} from "./components/Task2.js"
-import {Task3} from "./components/Task3.js"
+import "./Project1.css";
+import React, {useState} from "react";
+import { Task1 } from "./components/Task1.js";
+import { Task2 } from "./components/Task2.js";
+import { Student, StudentHeap } from "./components/Task3.js";
 
 function Project1() {
   const list = new Task1();
@@ -19,22 +19,37 @@ function Project1() {
 
   const heap = new Task2();
 
- const handleActionsHeap =()=>{
-   heap.insert(10);
-   heap.insert(5);
-   heap.insert(20);
-   heap.insert(1);
-   heap.display();
+  const handleActionsHeap = () => {
+    heap.insert(10);
+    heap.insert(5);
+    heap.insert(20);
+    heap.insert(1);
+    heap.display();
 
-   heap.remove();
-   heap.display();
+    heap.remove();
+    heap.display();
 
-   const arr = [3, 9, 2, 1, 7, 8];
-   heap.buildHeap(arr);
-   heap.display();
+    const arr = [3, 9, 2, 1, 7, 8];
+    heap.buildHeap(arr);
+    heap.display();
 
-   heap.heapSort(); 
- } 
+    heap.heapSort();
+  };
+  
+  const students = [
+    new Student("Ivanov", "Ivan", "Ivanovich", "Kyiv", 85, "male", "2000-05-12"),
+    new Student("Petrova", "Maria", "Petrovna", "Lviv", 90, "female", "1999-12-30"),
+    new Student("Sidorov", "Sergey", "Sergeevich", "Kharkiv", 78, "male", "2001-05-05"),
+    new Student("Kovalenko", "Olga", "Vladimirovna", "Odessa", 82, "female", "2000-08-20"),
+  ];
+ 
+  const handleActionsStudents = () => {
+   const studentHeap = new StudentHeap(students);
+   const sortedMonths = studentHeap.heapSortByMonth();  
+ 
+   console.log("Sorted months by student count:", sortedMonths);
+  };
+
 
   return (
     <div className="Project1">
@@ -46,11 +61,11 @@ function Project1() {
           <button onClick={handleActionsHeap}>Купа</button>
         </div>
         <div className="blockProj1">
-          <button onClick={Task3}>Пірамідальне сортування (варіант 3)</button>
+          <button onClick={handleActionsStudents}>Пірамідальне сортування (варіант 3)</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Project1
+export default Project1;

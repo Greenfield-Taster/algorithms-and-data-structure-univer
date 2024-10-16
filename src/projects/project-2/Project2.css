@@ -1,8 +1,11 @@
-.Project2{
-    background: linear-gradient(#e29a9a, #9198e5);
-    background-size: cover;
+.Project2 {
+  background: linear-gradient(#e29a9a, #9198e5);
+  background-size: cover;
   width: 100vw;
-  height: 100vh; 
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: auto;
 }
 
 .wrapperButtons {

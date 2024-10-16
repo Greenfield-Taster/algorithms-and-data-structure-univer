@@ -10,19 +10,19 @@ function App() {
           <Link to="/project-1" className="link">
             <div className="block">Move to project 1</div>
           </Link>
-          <Link to="/project-1" className="link">
+          <Link to="/project-2" className="link">
             <div className="block">Move to project 2</div>
           </Link>
-          <Link to="/project-1" className="link">
+          <Link to="/project-3" className="link">
             <div className="block">Move to project 3</div>
           </Link>
-          <Link to="/project-1" className="link">
+          <Link to="/project-4" className="link">
             <div className="block">Move to project 4</div>
           </Link>
-          <Link to="/project-1" className="link">
+          <Link to="/project-5" className="link">
             <div className="block">Move to project 5</div>
           </Link>
-          <Link to="/project-1" className="link">
+          <Link to="/project-6" className="link">
             <div className="block">Move to project 6</div>
           </Link>
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-// Узел дерева
+ 
 class StudentNode {
   constructor(gradebookNumber, surname, initials, group, averageGrade) {
     this.gradebookNumber = gradebookNumber;
@@ -12,14 +11,12 @@ class StudentNode {
     this.right = null;
   }
 }
-
-// Бинарное дерево поиска для студентов
+ 
 class StudentTree {
   constructor() {
     this.root = null;
   }
-
-  // Вставка студента в дерево
+ 
   insert(gradebookNumber, surname, initials, group, averageGrade) {
     const newNode = new StudentNode(
       gradebookNumber,
@@ -50,8 +47,7 @@ class StudentTree {
       }
     }
   }
-
-  // Поиск студента по номеру зачетной книжки
+ 
   find(gradebookNumber) {
     return this.search(this.root, gradebookNumber);
   }
@@ -66,13 +62,11 @@ class StudentTree {
       return node;
     }
   }
-
-  // Поиск студента с наивысшим средним баллом
+ 
   findBestStudent() {
     return this.findExtremum(this.root, "max");
   }
-
-  // Поиск студента с наихудшим средним баллом
+ 
   findWorstStudent() {
     return this.findExtremum(this.root, "min");
   }
@@ -102,8 +96,7 @@ class StudentTree {
     traverse(node);
     return extremumNode;
   }
-
-  // Получение всех студентов для визуализации дерева (симметричный обход)
+ 
   getStudentsInOrder(node = this.root, students = []) {
     if (node !== null) {
       this.getStudentsInOrder(node.left, students);
@@ -125,8 +118,7 @@ const Task2 = () => {
   const [searchResult, setSearchResult] = useState(null);
   const [bestStudent, setBestStudent] = useState(null);
   const [worstStudent, setWorstStudent] = useState(null);
-
-  // Обработчик добавления студента
+ 
   const handleInsert = () => {
     studentTree.insert(
       gradebookNumber,
@@ -141,20 +133,17 @@ const Task2 = () => {
     setGroup("");
     setAverageGrade("");
   };
-
-  // Поиск студента по номеру зачетной книжки
+ 
   const handleSearch = () => {
     const student = studentTree.find(parseInt(searchNumber));
     setSearchResult(student);
   };
-
-  // Поиск лучшего студента
+ 
   const handleFindBest = () => {
     const best = studentTree.findBestStudent();
     setBestStudent(best);
   };
-
-  // Поиск худшего студента
+ 
   const handleFindWorst = () => {
     const worst = studentTree.findWorstStudent();
     setWorstStudent(worst);

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-// Хеш-таблица с методом цепочек
 class HashTable {
   constructor(size) {
     this.size = size;
@@ -8,34 +7,29 @@ class HashTable {
       .fill(null)
       .map(() => []);
   }
-
-  // Хеш-функция умножения
+ 
   hash(key) {
-    const A = 0.6180339887; // Константа, основанная на золотом сечении
+    const A = 0.6180339887;  
     const hashValue = key
       .split("")
       .reduce((acc, char) => acc + char.charCodeAt(0), 0);
     return Math.floor(this.size * ((hashValue * A) % 1));
   }
-
-  // Вставка в хеш-таблицу
+ 
   insert(key, value) {
     const index = this.hash(key);
     const chain = this.table[index];
-
-    // Проверяем, есть ли уже такой ключ
+ 
     for (let item of chain) {
       if (item.key === key) {
-        item.value = value; // Обновляем значение
+        item.value = value; 
         return;
       }
     }
-
-    // Если ключа нет, добавляем новый элемент
+ 
     chain.push({ key, value });
   }
-
-  // Поиск в хеш-таблице
+ 
   find(key) {
     const index = this.hash(key);
     const chain = this.table[index];
@@ -46,10 +40,9 @@ class HashTable {
       }
     }
 
-    return null; // Если ключ не найден
+    return null;  
   }
-
-  // Получить все данные для визуализации таблицы
+ 
   getTable() {
     return this.table;
   }
@@ -61,8 +54,7 @@ const Task1 = () => {
   const [position, setPosition] = useState("");
   const [searchName, setSearchName] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-
-  // Обработчик для вставки данных в хеш-таблицу
+ 
   const handleInsert = () => {
     if (name && position) {
       hashTable.insert(name, position);
@@ -70,8 +62,7 @@ const Task1 = () => {
       setPosition("");
     }
   };
-
-  // Обработчик для поиска должности по имени
+ 
   const handleSearch = () => {
     const result = hashTable.find(searchName);
     setSearchResult(result);

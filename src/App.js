@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <header>Univer projects developed by Anastasiia Horbachova</header>
+      <header>Univer projects developed by Anastasiia Horbachova 3 Variant</header>
       <div className="wrapper">
         <div className="blocks">
           <Link to="/project-1" className="link">

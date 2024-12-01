@@ -5,6 +5,7 @@ import App from "./App";
 import Project1 from "./projects/project-1/Project1";
 import Project2 from "./projects/project-2/Project2";
 import Project3 from "./projects/project-3/Project3";
+import Project4 from "./projects/project-4/Project4";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,7 @@ root.render(
         <Route path="/project-1" element={<Project1 />} />
         <Route path="/project-2" element={<Project2 />} />
         <Route path="/project-3" element={<Project3 />} />
+        <Route path="/project-4" element={<Project4 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,0 +1,21 @@
+.Project4 {
+  background: linear-gradient(#e29a9a, #9198e5);
+  background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: auto;
+}
+
+.wrapperButtons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.wrapperTask1{
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}

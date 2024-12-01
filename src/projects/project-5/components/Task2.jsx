@@ -15,27 +15,25 @@ const Task2 = () => {
       setResult("Будь ласка, введіть коректні значення");
       return;
     }
-
-    // Функція для пошуку шляху з числа a до b за допомогою BFS
+ 
     const bfs = (start, target, operations) => {
-      const queue = [[start, []]]; // Черга для BFS з початковим числом і шляхом
-      const visited = new Set(); // Множина для перевірки відвіданих чисел
+      const queue = [[start, []]];  
+      const visited = new Set();  
 
       while (queue.length > 0) {
-        const [current, path] = queue.shift(); // Отримуємо поточне число та шлях
+        const [current, path] = queue.shift();  
 
         if (current === target) {
-          return path; // Якщо поточне число дорівнює цілі, повертаємо шлях
+          return path;  
         }
 
-        if (visited.has(current)) continue; // Пропускаємо вже відвідані числа
-        visited.add(current); // Маркуємо число як відвідане
+        if (visited.has(current)) continue; 
+        visited.add(current);  
 
         for (let op of operations) {
           let newNumber;
           let operationName = "";
-
-          // Перевірка операцій
+ 
           if (op.startsWith("додати")) {
             const num = parseInt(op.split(" ")[1]);
             newNumber = current + num;
@@ -47,15 +45,14 @@ const Task2 = () => {
           }
 
           if (!visited.has(newNumber)) {
-            queue.push([newNumber, [...path, operationName]]); // Додаємо нове число до черги
+            queue.push([newNumber, [...path, operationName]]);  
           }
         }
       }
 
-      return null; // Якщо не вдалося знайти шлях, повертаємо null
+      return null;  
     };
-
-    // Викликаємо BFS для пошуку мінімального шляху
+ 
     const operationsPath = bfs(numA, numB, ops);
 
     if (operationsPath) {

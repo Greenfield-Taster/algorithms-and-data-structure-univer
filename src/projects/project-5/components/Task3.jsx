@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-// Алгоритм Тарьяна для пошуку сильно зв'язних компонент
+ 
 const tarjanSCC = (graph) => {
   const low = {};
   const disc = {};
@@ -13,8 +12,7 @@ const tarjanSCC = (graph) => {
     disc[v] = low[v] = time++;
     stack.push(v);
     inStack[v] = true;
-
-    // Проходимо по всіх сусідах
+ 
     if (graph[v]) {
       for (let neighbor of graph[v]) {
         if (disc[neighbor] === undefined) {
@@ -27,8 +25,7 @@ const tarjanSCC = (graph) => {
         }
       }
     }
-
-    // Якщо поточна вершина є коренем сильно зв'язної компоненти
+ 
     if (low[v] === disc[v]) {
       const component = [];
       let w;
@@ -40,8 +37,7 @@ const tarjanSCC = (graph) => {
       result.push(component);
     }
   };
-
-  // Запускаємо DFS для кожної вершини
+ 
   for (let vertex in graph) {
     if (disc[vertex] === undefined) {
       dfs(vertex);
@@ -62,11 +58,9 @@ const Task3 = () => {
   const [sccResult, setSccResult] = useState([]);
 
   const handleSubmit = () => {
-    try {
-      // Перевірка на коректний формат введеного графа
+    try { 
       const parsedGraph = graph;
-
-      // Застосовуємо алгоритм Тарьяна для розкладу на SCC
+ 
       const stronglyConnectedComponents = tarjanSCC(parsedGraph);
       setSccResult(stronglyConnectedComponents);
     } catch (error) {

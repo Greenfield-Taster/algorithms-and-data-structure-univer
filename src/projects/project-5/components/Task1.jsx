@@ -12,11 +12,10 @@ const Task1 = () => {
   const [startVertex, setStartVertex] = useState("");
   const [distance, setDistance] = useState("");
   const [result, setResult] = useState([]);
-
-  // Функція для визначення вершин на заданій відстані
+ 
   const findVerticesAtDistance = () => {
     const visited = new Set();
-    const queue = [[startVertex, 0]]; // Містить пару [вершина, поточна відстань]
+    const queue = [[startVertex, 0]]; 
     visited.add(startVertex);
     const verticesAtDistance = [];
 
@@ -44,8 +43,7 @@ const Task1 = () => {
   return (
     <div className="container">
       <h2>Задайте граф та відстань</h2>
-
-      {/* Введення для графа (текстова область) */}
+ 
       <div className="input-container">
         <label className="label">
           Граф (введіть зв'язки у вигляді об'єкта):
@@ -58,8 +56,7 @@ const Task1 = () => {
           placeholder="Введіть граф у форматі JSON..."
         />
       </div>
-
-      {/* Вибір початкової вершини */}
+ 
       <div className="input-container">
         <label className="label">Виберіть початкову вершину:</label>
         <input
@@ -69,8 +66,7 @@ const Task1 = () => {
           onChange={(e) => setStartVertex(e.target.value)}
         />
       </div>
-
-      {/* Вибір відстані */}
+ 
       <div className="input-container">
         <label className="label">Виберіть відстань:</label>
         <input
@@ -79,14 +75,12 @@ const Task1 = () => {
           value={distance}
           onChange={(e) => setDistance(e.target.value)}
         />
-      </div>
+      </div> 
 
-      {/* Кнопка для пошуку вершин на заданій відстані */}
       <button className="button" onClick={findVerticesAtDistance}>
         Знайти вершини
       </button>
-
-      {/* Результат */}
+ 
       <div>
         <h3>
           Вершини на відстані {distance} від {startVertex}:

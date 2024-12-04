@@ -7,6 +7,7 @@ import Project2 from "./projects/project-2/Project2";
 import Project3 from "./projects/project-3/Project3";
 import Project4 from "./projects/project-4/Project4";
 import Project5 from "./projects/project-5/Project5";
+import Project6 from "./projects/project-6/Project6";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="/project-3" element={<Project3 />} />
         <Route path="/project-4" element={<Project4 />} />
         <Route path="/project-5" element={<Project5 />} />
+        <Route path="/project-6" element={<Project6 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

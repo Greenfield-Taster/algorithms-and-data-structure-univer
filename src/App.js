@@ -25,6 +25,9 @@ function App() {
           <Link to="/project-6" className="link">
             <div className="block">Move to project 6</div>
           </Link>
+          <Link to="/project-7" className="link">
+            <div className="block">Move to project 7</div>
+          </Link>
         </div>
       </div>
     </div>

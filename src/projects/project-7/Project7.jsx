@@ -8,7 +8,7 @@ const InterviewScheduler = () => {
   const [maxInterviews, setMaxInterviews] = useState(0);
 
   const generateRandomPairs = () => {
-    if (candidates.length === 0 || interviewers.length === 0) {
+    if (!interviewers.length || !candidates.length) {
       alert("Please enter both interviewers and candidates!");
       return;
     }

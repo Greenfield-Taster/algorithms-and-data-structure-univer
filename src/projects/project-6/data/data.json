@@ -1,0 +1,112 @@
+{
+  "streets": [
+    { "id": 1, "name": "Soborna Street" },
+    { "id": 2, "name": "Shevchenko Boulevard" },
+    { "id": 3, "name": "Independence Avenue" },
+    { "id": 4, "name": "Khortytska Street" },
+    { "id": 5, "name": "Central Avenue" },
+    { "id": 6, "name": "Victory Street" },
+    { "id": 7, "name": "Dnipro Embankment" },
+    { "id": 8, "name": "Heroes of Ukraine Avenue" },
+    { "id": 9, "name": "Metalurgiv Avenue" },
+    { "id": 10, "name": "Zaporizhzhia Sich Street" }
+  ],
+  "connections": [
+    {
+      "from": 1,
+      "to": 2,
+      "distance": 2.5,
+      "speedLimit": 50,
+      "trafficDelay": 1,
+      "oneWay": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "distance": 3.0,
+      "speedLimit": 60,
+      "trafficDelay": 2,
+      "oneWay": true
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "distance": 5.0,
+      "speedLimit": 40,
+      "trafficDelay": 3,
+      "oneWay": true
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "distance": 1.5,
+      "speedLimit": 30,
+      "trafficDelay": 0,
+      "oneWay": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "distance": 4.0,
+      "speedLimit": 50,
+      "trafficDelay": 1,
+      "oneWay": false
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "distance": 2.0,
+      "speedLimit": 60,
+      "trafficDelay": 2,
+      "oneWay": true
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "distance": 3.5,
+      "speedLimit": 70,
+      "trafficDelay": 1,
+      "oneWay": false
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "distance": 5.0,
+      "speedLimit": 80,
+      "trafficDelay": 0,
+      "oneWay": true
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "distance": 4.0,
+      "speedLimit": 50,
+      "trafficDelay": 1,
+      "oneWay": false
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "distance": 3.0,
+      "speedLimit": 40,
+      "trafficDelay": 3,
+      "oneWay": true
+    },
+    {
+      "from": 1,
+      "to": 10,
+      "distance": 6.0,
+      "speedLimit": 60,
+      "trafficDelay": 2,
+      "oneWay": false
+    },
+    {
+      "from": 4,
+      "to": 9,
+      "distance": 2.5,
+      "speedLimit": 50,
+      "trafficDelay": 1,
+      "oneWay": false
+    }
+  ]
+}

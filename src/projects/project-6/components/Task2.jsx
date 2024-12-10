@@ -1,123 +1,68 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from 'react'
+import data from '../data/data.json'
+import { buildGraph, dijkstra } from "./class/Class-Task2";
 
 const Task2 = () => {
-  const [a, setA] = useState("");
-  const [b, setB] = useState("");
-  const [operations, setOperations] = useState("");
-  const [result, setResult] = useState("");
+  const [graph, setGraph] = useState({});
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+  const [result, setResult] = useState(null);
 
-  const handleSubmit = () => {
-    const numA = parseInt(a);
-    const numB = parseInt(b);
-    const ops = operations.split(",").map((op) => op.trim());
+  useEffect(() => {
+    const builtGraph = buildGraph(data.connections);
+    setGraph(builtGraph);
+  }, []);
 
-    if (isNaN(numA) || isNaN(numB) || ops.length === 0) {
-      setResult("Будь ласка, введіть коректні значення");
-      return;
-    }
- 
-    const bfs = (start, target, operations) => {
-      const queue = [[start, []]];  
-      const visited = new Set();  
-
-      while (queue.length > 0) {
-        const [current, path] = queue.shift();  
-
-        if (current === target) {
-          return path;  
-        }
-
-        if (visited.has(current)) continue; 
-        visited.add(current);  
-
-        for (let op of operations) {
-          let newNumber;
-          let operationName = "";
- 
-          if (op.startsWith("додати")) {
-            const num = parseInt(op.split(" ")[1]);
-            newNumber = current + num;
-            operationName = `додати ${num}`;
-          } else if (op.startsWith("помножити")) {
-            const num = parseInt(op.split(" ")[2]);
-            newNumber = current * num;
-            operationName = `помножити на ${num}`;
-          }
-
-          if (!visited.has(newNumber)) {
-            queue.push([newNumber, [...path, operationName]]);  
-          }
-        }
-      }
-
-      return null;  
-    };
- 
-    const operationsPath = bfs(numA, numB, ops);
-
-    if (operationsPath) {
-      setResult(`Мінімальний набір операцій: ${operationsPath.join(" -> ")}`);
-    } else {
-      setResult("Перетворення неможливе");
+  const handleCalculate = () => {
+    if (start && end) {
+      const { path, distance,  } = dijkstra(graph, start, end);
+      setResult({ path, distance });
     }
   };
 
   return (
-    <div className="container">
-      <h2>Задача 2: Перетворення числа за допомогою операцій</h2>
-
-      <div className="input-container">
-        <label className="label" htmlFor="a">
-          Число a:
-        </label>
-        <input
-          id="a"
-          className="input"
-          type="number"
-          value={a}
-          onChange={(e) => setA(e.target.value)}
-          placeholder="Введіть число a"
-        />
+    <div>
+      <h1>Find Shortest Path</h1>
+      <div>
+        <label>Start Street: </label>
+        <select value={start} onChange={(e) => setStart(e.target.value)}>
+          <option value="">Select Start</option>
+          {data.streets.map((street) => (
+            <option key={street.id} value={street.id}>
+              {street.name}
+            </option>
+          ))}
+        </select>
       </div>
-
-      <div className="input-container">
-        <label className="label" htmlFor="b">
-          Число b:
-        </label>
-        <input
-          id="b"
-          className="input"
-          type="number"
-          value={b}
-          onChange={(e) => setB(e.target.value)}
-          placeholder="Введіть число b"
-        />
+      <div>
+        <label>End Street: </label>
+        <select value={end} onChange={(e) => setEnd(e.target.value)}>
+          <option value="">Select End</option>
+          {data.streets.map((street) => (
+            <option key={street.id} value={street.id}>
+              {street.name}
+            </option>
+          ))}
+        </select>
       </div>
-
-      <div className="input-container">
-        <label className="label" htmlFor="operations">
-          Операції (через кому):
-        </label>
-        <input
-          id="operations"
-          className="input"
-          type="text"
-          value={operations}
-          onChange={(e) => setOperations(e.target.value)}
-          placeholder="Введіть операції, напр. 'додати 3, помножити на 2'"
-        />
-      </div>
-
-      <button className="button" onClick={handleSubmit}>
-        Знайти шлях
-      </button>
-
-      <div className="result">
-        <h3>Результат:</h3>
-        <p>{result}</p>
-      </div>
+      <button onClick={handleCalculate}>Calculate</button>
+      {result && (
+        <div>
+          <h2>Shortest Path</h2>
+          <p>
+            Path:{" "}
+            {result.path
+              .map(
+                (id) =>
+                  data.streets.find((street) => street.id === parseInt(id)).name
+              )
+              .join(" → ")}
+          </p>
+          <p>Total Travel Time: {result.distance.toFixed(2)} minutes</p>
+        </div>
+      )}
     </div>
   );
-};
+}
 
-export default Task2;
+export default Task2
